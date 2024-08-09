@@ -177,17 +177,24 @@ class AddTaskScreen extends StatelessWidget {
           const SizedBox(height: 10),
           ElevatedButton(
             onPressed: () {
-              Provider.of<TaskData>(context, listen: false)
-                  .addTask(newTaskTitle);
-              Navigator.pop(context);
+              if (newTaskTitle.isNotEmpty) {
+                Provider.of<TaskData>(context, listen: false).addTask(newTaskTitle);
+                Navigator.pop(context);
+              }
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.deepPurple,
               padding: const EdgeInsets.all(15),
-              textStyle: const TextStyle(color: Colors.white),
             ),
-            child: const Text('Add'),
+            child: const Text(
+              'Add',
+              style: TextStyle(
+                color: Colors.white, // Explicitly set text color to white
+                fontSize: 18,
+              ),
+            ),
           ),
+
         ],
       ),
     );
